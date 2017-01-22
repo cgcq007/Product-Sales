@@ -21,18 +21,18 @@ namespace Product_Sales
         
         protected void Button1_Click(object sender, EventArgs e)
         {
-            String userName = UserName.Text;
+            String username = UserName.Text;
             String password = Password.Text;
 
             SqlConnection conn = new SqlConnection();
             conn.ConnectionString = "Initial Catalog=ProductSales;Data Source=.;Integrated Security=true";
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("select firstName from userlogin where username = '" + userName + "' and password = '" + password + "'", conn);
+            SqlCommand cmd = new SqlCommand("select firstName from userlogin where username = '" + username + "' and password = '" + password + "'", conn);
             Object result = cmd.ExecuteScalar();
             if (result != null)
             {
-                Session["UserName"] = userName;
+                Session["UserName"] = username;
                 Session["FirstName"] = result;
                 Response.Redirect("index.aspx");
             } else

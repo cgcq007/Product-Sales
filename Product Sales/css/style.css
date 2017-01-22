@@ -1454,7 +1454,7 @@ a.mask {
 .account-bottom {
     margin-top: 2.2em;
 }
-.account-left input[type="text"],.account-left input[type="password"] {
+.account-left input{
     width: 90%;
     margin: 0px;
     color: #000;
@@ -2274,7 +2274,7 @@ figure.effect-bubba p {
     width: 50%;
     float: left;
 }
-.account-left input[type="text"], .account-left input[type="password"] {
+.account-left input{
     margin-bottom: 15px;
 	width: 95%;
 }
@@ -2341,7 +2341,7 @@ ul.cart-header li span, ul.cart-header1 li span, ul.cart-header2 li span {
 .account-left h3 {
     font-size: 1.35em;
 }
-.account-left input[type="text"], .account-left input[type="password"] {
+.account-left input{
     margin-bottom: 10px;
     width: 95%;
     font-size: 12px;
