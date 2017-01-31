@@ -11,7 +11,10 @@ namespace Product_Sales
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Dictionary<String, int> cart = (Dictionary<String, int>)Session["cart"];
+            String cartId = "(" + string.Join(",", cart.Keys) + ")";
+            SqlDataSource1.SelectCommand = "SELECT * FROM [products] WHERE [id] in " + cartId;
+            Repeater1.DataBind();
         }
     }
 }

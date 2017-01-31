@@ -30,5 +30,15 @@ namespace Product_Sales
             tmp = (dv.Table.Rows.Count == 0) ? tmp : (int)dv.Table.Rows[dv.Table.Rows.Count - 1][0];
             Session["lastId"] = tmp;
         }
+
+        protected void Discount60_CheckedChanged(object sender, EventArgs e)
+        {
+             
+        }
+
+        protected void Discount50_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

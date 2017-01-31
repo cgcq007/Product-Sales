@@ -253,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <ItemTemplate>
                                     <div class="col-md-4 product-left p-left">
                                         <div class="product-main simpleCart_shelfItem">
-                                            <a href="single.aspx" class="mask">
+                                            <a href="single.aspx?id=<%#Eval("id") %>" class="mask">
                                                 <img class="img-responsive zoom-img" src="images/<%#Eval("picture") %>" alt="" /></a>
                                             <div class="product-bottom">
                                                 <h3><%#Eval("name") %></h3>
@@ -279,9 +279,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 scroll-pane">
                                     <div class="col col-4">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
-                                    </div>
-                                    <div class="col col-4">
+                                            <asp:CheckBox ID="All" runat="server" Checked="true"/><i></i>All Accessories</label>
                                         <label class="checkbox">
                                             <input type="checkbox" name="checkbox"><i></i>Women Watches</label>
                                         <label class="checkbox">
@@ -296,9 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 row2 scroll-pane">
                                     <div class="col col-4">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-                                    </div>
-                                    <div class="col col-4">
+                                            <input type="checkbox" name="checkbox" ><i></i>kurtas</label>
                                         <label class="checkbox">
                                             <input type="checkbox" name="checkbox"><i></i>Sonata</label>
                                         <label class="checkbox">
@@ -329,7 +325,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <section class="sky-form">
                                 <h4>Colour</h4>
                                 <ul class="w_nav2">
-                                    <li><a class="color1" href="#"></a></li>
+                                    <li><asp:LinkButton Class="color1" ID="LinkButton1" runat="server"></asp:LinkButton></li>
                                     <li><a class="color2" href="#"></a></li>
                                     <li><a class="color3" href="#"></a></li>
                                     <li><a class="color4" href="#"></a></li>
@@ -356,13 +352,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 row2 scroll-pane">
                                     <div class="col col-4">
                                         <label class="radio">
-                                            <input type="radio" name="radio" checked=""><i></i>60 % and above</label>
+                                            <asp:RadioButton GroupName="Discount" ID="DiscountAll" runat="server" AutoPostBack="True" Checked="true"/><i></i>All</label>
                                         <label class="radio">
-                                            <input type="radio" name="radio"><i></i>50 % and above</label>
+                                            <asp:RadioButton GroupName="Discount" ID="Discount60" runat="server" OnCheckedChanged="Discount60_CheckedChanged" AutoPostBack="True"/><i></i>60 % and above</label>
+                                        <label class="radio">
+                                            <asp:RadioButton GroupName="Discount" ID="Discount50" runat="server" AutoPostBack="True" OnCheckedChanged="Discount50_CheckedChanged"/><i></i>50 % and above</label>
                                         <label class="radio">
                                             <input type="radio" name="radio"><i></i>40 % and above</label>
-                                    </div>
-                                    <div class="col col-4">
                                         <label class="radio">
                                             <input type="radio" name="radio"><i></i>30 % and above</label>
                                         <label class="radio">

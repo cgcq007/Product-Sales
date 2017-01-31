@@ -281,36 +281,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li> </li>
 					<div class="clearfix"> </div>
 				</ul>
-				<ul class="cart-header">
-					<div class="close1"> </div>
-						<li class="ring-in"><a href="single.aspx" ><img src="images/c-1.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 290.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-					<div class="clearfix"> </div>
-				</ul>
-				<ul class=" cart-header1">
-					<div class="close2"> </div>
-						<li class="ring-in"><a href="single.aspx" ><img src="images/c-2.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 300.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header2">
-					<div class="close3"> </div>
-						<li class="ring-in"><a href="single.aspx" ><img src="images/c-3.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 360.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
+                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                    <ItemTemplate>
+                        <ul class="cart-header" id="header<%#Eval("id") %>">
+                            <div class="close" id="close<%#Eval("id") %>"></div>
+                            <li class="ring-in"><a href="single.aspx?id=<%#Eval("id") %>">
+                                <img src="images/<%#Eval("picture") %>" class="img-responsive" alt=""></a>
+                            </li>
+                            <li><span class="name"><%#Eval("name") %></span></li>
+                            <li><span class="cost">$ <%#Eval("price") %></span></li>
+                            <li><span>Free</span>
+                                <p>Delivered in 2-3 business days</p>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                        <script>$(document).ready(function (c) {
+                                $('#close<%#Eval("id") %>').on('click', function (c) {
+                                $('#header<%#Eval("id") %>').fadeOut('slow', function (c) {
+                                    $('#header<%#Eval("id") %>').remove();
+                                });
+                            });
+                        });
+                        </script>
+                    </ItemTemplate>
+                </asp:Repeater>
 			</div>
 			</div>  
 		 </div>
@@ -379,6 +373,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:productSalesConnectionString %>">
+    </asp:SqlDataSource>
 	<!--footer-end-->	
 </body>
 </html>

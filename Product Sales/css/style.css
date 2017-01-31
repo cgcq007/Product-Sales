@@ -1506,12 +1506,13 @@ a.mask {
 .ckeckout{
 	padding:6em 0px;
 }
-.close1,.close2,.close3{
+.close,.close1,.close2,.close3{
 	background: url('../images/close.png') no-repeat 0px 0px;
 	cursor: pointer;
 	width: 28px;
 	height: 28px;
 	position: absolute;
+	opacity: 1;
     right: 5px;
     top: 10px;
 	-webkit-transition: color 0.2s ease-in-out;
@@ -2510,7 +2511,7 @@ h3.ghj {
 .radio {
     margin: 0;
 }
-.close1, .close2, .close3 {
+.close, .close1, .close2, .close3 {
     width: 20px;
     height: 20px;
     top: 5px;

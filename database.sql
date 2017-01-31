@@ -55,8 +55,3 @@ insert into products (name, price, discount, color, size, catogory, brand, descr
 insert into products (name, price, discount, color, size, catogory, brand, description, infomation, rate, numOfRate, reviews, tag, sku, picture) values('Lorem Ipsum7', 95, 50, 'Black, Red', 'Large, Medium, Small', 'Women', 'Titan', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.', '10 * 10 * 10', 4, 2, 'Good. Great.', 'Woman', 'CK09', 'p-7.png');
 insert into products (name, price, discount, color, size, catogory, brand, description, infomation, rate, numOfRate, reviews, tag, sku, picture) values('Lorem Ipsum8', 95, 50, 'Black, Red', 'Large, Medium, Small', 'Women', 'Titan', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.', '10 * 10 * 10', 4, 2, 'Good. Great.', 'Woman', 'CK09', 'p-8.png');
 go
-
-select top 3 * from products  
-where id not in (  
-  select top 2 id from products  
-)  
