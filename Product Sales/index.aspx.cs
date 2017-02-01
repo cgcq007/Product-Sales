@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,15 +13,20 @@ namespace Product_Sales
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["UserName"] != null)
-            {
-                if(Session["Login"] == null)
-                {
-                    HttpContext.Current.Response.Write("<script>alert('Welcome " + Session["FirstName"] + "!')</script>");
-                    Session["Login"] = "true";
-                }
-                Label1.Text = "Hello " + Session["FirstName"].ToString();
-            }
+            SqlConnection conn = new SqlConnection("Initial Catalog=ProductSales;Data Source=.;Integrated Security=true");
+            String sql = "select * from products";
+            SqlDataAdapter sda = new SqlDataAdapter(sql, conn);
+            DataSet ds = new DataSet();
+            sda.Fill(ds);
+
+            PagedDataSource objPage = new PagedDataSource();
+            objPage.DataSource = ds.Tables[0].DefaultView;
+            objPage.AllowPaging = true;
+            objPage.PageSize = 8;
+            objPage.CurrentPageIndex = 0;
+
+            Repeater1.DataSource = objPage;
+            Repeater1.DataBind();
         }
     }
 }

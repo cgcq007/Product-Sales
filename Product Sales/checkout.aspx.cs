@@ -15,11 +15,9 @@ namespace Product_Sales
             if (Request.RequestType == "POST")
             {
                 cart.Remove(Request.Form["id"]);
-                System.Diagnostics.Debug.WriteLine(cart);
                 Session["cart"] = cart;
                 return;
             }
-            System.Diagnostics.Debug.WriteLine(cart.Count);
             if (cart.Count != 0)
             {
                 String cartId = "(" + string.Join(",", cart.Keys) + ")";

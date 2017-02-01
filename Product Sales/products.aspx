@@ -249,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="prdt-top">
                     <div class="col-md-9 prdt-left">
                         <div class="product-one">
-                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                            <asp:Repeater ID="Repeater1" runat="server">
                                 <ItemTemplate>
                                     <div class="col-md-4 product-left p-left">
                                         <div class="product-main simpleCart_shelfItem">
@@ -269,7 +269,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 </ItemTemplate>
                             </asp:Repeater>
                             <div class="clearfix"></div>
-                            <asp:Button ID="Button2" runat="server" Text="Next" />
+                            <nav class="col-md-6 col-md-offset-4" style="padding:20px 0 0 0">
+                                <ul class="pagination pagination-lg">
+                                    <%--<li><a href="products.aspx?page=1"><i class="fa fa-angle-left">«</i></a></li>--%>
+                                    <li><asp:LinkButton ID="FirstPage" runat="server" OnClick="FirstPage_Click"><i class="fa fa-angle-left">«</i></asp:LinkButton></li>
+                                    <asp:Repeater ID="Repeater2" runat="server">
+                                        <ItemTemplate>
+                                            <li <%#Container.ItemIndex == Convert.ToInt32(Session["pageIndex"].ToString()) ? "class=\"active\"" :String.Empty%>>
+                                                <%--<a href="products.aspx?page=<%#Eval("num") %>"><%#Eval("num") %></a>--%>
+                                                <asp:LinkButton ID="LinkButton1" Text=<%#Eval("num") %> runat="server" OnClick="PageClick"><%#Eval("num") %></asp:LinkButton>
+                                            </li>
+                                            <%--<%#Container.ItemIndex == Convert.ToInt32(Session["lastPage"]) - 1 ? ("<li><a href=\"products.aspx?page=" + Session["lastPage"] + "\"><i class=\"fa fa-angle-right\">»</i></a></li>") :String.Empty%>--%>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                    <li><asp:LinkButton ID="LastPage" runat="server" OnClick="LastPage_Click"><i class="fa fa-angle-right">»</i></asp:LinkButton></li>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                     <div class="col-md-3 prdt-right">
@@ -279,13 +294,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 scroll-pane">
                                     <div class="col col-4">
                                         <label class="checkbox">
-                                            <asp:CheckBox ID="All" runat="server" Checked="true"/><i></i>All Accessories</label>
+                                            <asp:CheckBox ID="All" runat="server" Checked="true" OnCheckedChanged="CategoryChanged" AutoPostBack="True"/><i></i>All Accessories</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Women Watches</label>
+                                            <asp:CheckBox ID="Women" runat="server" AutoPostBack="True" OnCheckedChanged="CategoryChanged"/><i></i>Women Watches</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
+                                            <asp:CheckBox ID="Men" runat="server" AutoPostBack="True" OnCheckedChanged="CategoryChanged"/><i></i>Men Watches</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Men Watches</label>
+                                            <asp:CheckBox ID="Kids" runat="server" AutoPostBack="True" OnCheckedChanged="CategoryChanged"/><i></i>Kids Watches</label>
                                     </div>
                                 </div>
                             </section>
@@ -294,18 +309,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 row2 scroll-pane">
                                     <div class="col col-4">
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox" ><i></i>kurtas</label>
+                                            <asp:CheckBox ID="Kurtas" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Kurtas</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Sonata</label>
+                                            <asp:CheckBox ID="Sonata" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Sonata</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Titan</label>
+                                            <asp:CheckBox ID="Titan" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Titan</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Casio</label>
+                                            <asp:CheckBox ID="Casio" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Casio</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Omax</label>
+                                            <asp:CheckBox ID="Omax" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Omax</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>shree</label>
-                                        <label class="checkbox">
+                                            <asp:CheckBox ID="Shree" runat="server" AutoPostBack="True" OnCheckedChanged="BrandChanged"/><i></i>Shree</label>
+                                        <%--<label class="checkbox">
                                             <input type="checkbox" name="checkbox"><i></i>Fastrack</label>
                                         <label class="checkbox">
                                             <input type="checkbox" name="checkbox"><i></i>Sports</label>
@@ -318,15 +333,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <label class="checkbox">
                                             <input type="checkbox" name="checkbox"><i></i>Citizen</label>
                                         <label class="checkbox">
-                                            <input type="checkbox" name="checkbox"><i></i>Diesel</label>
+                                            <input type="checkbox" name="checkbox"><i></i>Diesel</label>--%>
                                     </div>
                                 </div>
                             </section>
                             <section class="sky-form">
                                 <h4>Colour</h4>
                                 <ul class="w_nav2">
-                                    <li><asp:LinkButton Class="color1" ID="LinkButton1" runat="server"></asp:LinkButton></li>
-                                    <li><a class="color2" href="#"></a></li>
+                                    <li><asp:LinkButton Class="color1" ID="Pink" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color2" ID="Gold" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color3" ID="Brown" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color4" ID="Blue" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color5" ID="Red" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color6" ID="Black" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <li><asp:LinkButton Class="color7" ID="While" runat="server" OnClick="ColorClick"></asp:LinkButton></li>
+                                    <%--<li><a class="color2" href="#"></a></li>
                                     <li><a class="color3" href="#"></a></li>
                                     <li><a class="color4" href="#"></a></li>
                                     <li><a class="color5" href="#"></a></li>
@@ -344,7 +365,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <li><a class="color7" href="#"></a></li>
                                     <li><a class="color8" href="#"></a></li>
                                     <li><a class="color9" href="#"></a></li>
-                                    <li><a class="color10" href="#"></a></li>
+                                    <li><a class="color10" href="#"></a></li>--%>
                                 </ul>
                             </section>
                             <section class="sky-form">
@@ -352,19 +373,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="row1 row2 scroll-pane">
                                     <div class="col col-4">
                                         <label class="radio">
-                                            <asp:RadioButton GroupName="Discount" ID="DiscountAll" runat="server" AutoPostBack="True" Checked="true"/><i></i>All</label>
+                                            <asp:RadioButton GroupName="Discount" ID="Discount0" runat="server" AutoPostBack="True" OnCheckedChanged="DiscountChanged" Checked="true"/><i></i>All</label>
                                         <label class="radio">
-                                            <asp:RadioButton GroupName="Discount" ID="Discount60" runat="server" OnCheckedChanged="Discount60_CheckedChanged" AutoPostBack="True"/><i></i>60 % and above</label>
+                                            <asp:RadioButton GroupName="Discount" ID="Discount20" runat="server" AutoPostBack="True" OnCheckedChanged="DiscountChanged"/><i></i>20 % and above</label>
                                         <label class="radio">
-                                            <asp:RadioButton GroupName="Discount" ID="Discount50" runat="server" AutoPostBack="True" OnCheckedChanged="Discount50_CheckedChanged"/><i></i>50 % and above</label>
+                                            <asp:RadioButton GroupName="Discount" ID="Discount40" runat="server" AutoPostBack="True" OnCheckedChanged="DiscountChanged"/><i></i>40 % and above</label>
                                         <label class="radio">
-                                            <input type="radio" name="radio"><i></i>40 % and above</label>
+                                            <asp:RadioButton GroupName="Discount" ID="Discount60" runat="server" AutoPostBack="True" OnCheckedChanged="DiscountChanged"/><i></i>60 % and above</label>
                                         <label class="radio">
-                                            <input type="radio" name="radio"><i></i>30 % and above</label>
-                                        <label class="radio">
+                                            <asp:RadioButton GroupName="Discount" ID="Discount80" runat="server" AutoPostBack="True" OnCheckedChanged="DiscountChanged"/><i></i>80 % and above</label>
+                                        <%--<label class="radio">
                                             <input type="radio" name="radio"><i></i>20 % and above</label>
                                         <label class="radio">
-                                            <input type="radio" name="radio"><i></i>10 % and above</label>
+                                            <input type="radio" name="radio"><i></i>10 % and above</label>--%>
                                     </div>
                                 </div>
                             </section>
@@ -461,11 +482,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
         </div>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:productSalesConnectionString %>" SelectCommand="SELECT TOP (6) id, name, price, discount, picture FROM products WHERE (id &gt; @id)">
+        <%--<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:productSalesConnectionString %>" SelectCommand="SELECT TOP (6) id, name, price, discount, picture FROM products WHERE (id &gt; @id)">
             <SelectParameters>
                 <asp:SessionParameter DefaultValue="0" Name="id" SessionField="startId" Type="Int32" />
             </SelectParameters>
-        </asp:SqlDataSource>
+        </asp:SqlDataSource>--%>
         <!--footer-end-->
     </form>
 </body>
