@@ -247,31 +247,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="ckeckout-top">
 			<div class="cart-items">
 			 <h3>My Shopping Bag (3)</h3>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			<script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-						$('.cart-header1').fadeOut('slow', function(c){
-							$('.cart-header1').remove();
-						});
-						});	  
-					});
-			   </script>
-			   <script>$(document).ready(function(c) {
-					$('.close3').on('click', function(c){
-						$('.cart-header2').fadeOut('slow', function(c){
-							$('.cart-header2').remove();
-						});
-						});	  
-					});
-			   </script>
-				
 			<div class="in-check" >
 				<ul class="unit">
 					<li><span>Item</span></li>
@@ -286,7 +261,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul class="cart-header" id="header<%#Eval("id") %>">
                             <div class="close" id="close<%#Eval("id") %>"></div>
                             <li class="ring-in"><a href="single.aspx?id=<%#Eval("id") %>">
-                                <img src="images/<%#Eval("picture") %>" class="img-responsive" alt=""></a>
+                                <img src="images/<%#Eval("picture") %>" class="img-responsive" alt="" style="max-height:9em"></a>
                             </li>
                             <li><span class="name"><%#Eval("name") %></span></li>
                             <li><span class="cost">$ <%#Eval("price") %></span></li>
@@ -296,7 +271,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <div class="clearfix"></div>
                         </ul>
                         <script>$(document).ready(function (c) {
-                                $('#close<%#Eval("id") %>').on('click', function (c) {
+                            $('#close<%#Eval("id") %>').on('click', function (c) {
+                                $.post('checkout.aspx', {id: <%#Eval("id") %>});
                                 $('#header<%#Eval("id") %>').fadeOut('slow', function (c) {
                                     $('#header<%#Eval("id") %>').remove();
                                 });
