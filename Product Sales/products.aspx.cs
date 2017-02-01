@@ -22,9 +22,19 @@ namespace Product_Sales
         static int pageIndex = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             int page = Convert.ToInt32(Request.QueryString["page"]) - 1;
             SqlConnection conn = new SqlConnection("Initial Catalog=ProductSales;Data Source=.;Integrated Security=true");
-            String command = sql + "where " + discount;
+            String command = sql + "where id in ";
+            if (Request.QueryString["Search"] != null)
+            {
+                String keyword = Request["Search"].ToString();
+                command += "(select id from products where name like '%" + keyword + "%' or color like '%" + keyword + "%' or size like '%" + keyword + "%' or catogory like '%" + keyword + "%' or brand like '%" + keyword + "%' or description like '%" + keyword + "%' or tag like '%" + keyword + "%')";
+            } else
+            {
+                command += "(select id from products)";
+            }
+            command += "and " + discount;
             if (category != "")
             {
                 command += "and " + category;
