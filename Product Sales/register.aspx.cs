@@ -12,10 +12,7 @@ namespace Product_Sales
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserName"] != null)
-            {
-                Label1.Text = "Hello " + Session["FirstName"];
-            }
+
         }
 
         protected void Submit_Click(object sender, EventArgs e)

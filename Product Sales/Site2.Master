@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Product_Sales.Site1" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site2.master.cs" Inherits="Product_Sales.Site2" %>
 
 <!DOCTYPE html>
 
@@ -238,19 +238,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
         <!--bottom-header-->
-        <!--start-breadcrumbs-->
-        <div class="breadcrumbs">
-            <div class="container">
-                <div class="breadcrumbs-main">
-                    <ol class="breadcrumb">
-                        <li><a href="index.aspx">Home</a></li>
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <!--end-breadcrumbs-->
         <!--start-single-->
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>

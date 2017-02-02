@@ -11,6 +11,10 @@ namespace Product_Sales
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["cart"] == null)
+            {
+                Session["cart"] = new Dictionary<String, int>();
+            }
             Dictionary<String, int> cart = (Dictionary<String, int>)Session["cart"];
             if (Request.RequestType == "POST")
             {

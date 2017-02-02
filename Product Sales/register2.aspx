@@ -24,7 +24,7 @@
                                 <input type="radio" name="sex"><i></i>Female</label></li>
                         <div class="clearfix"></div>
                     </ul>
-                </div>
+                <%--</div>--%>
                 <div class="col-md-6 account-left">
                     <input name="Password" placeholder="Password" type="password" tabindex="4" required>
                     <input name="RePassword" placeholder="Retype password" type="password" tabindex="4" required>
